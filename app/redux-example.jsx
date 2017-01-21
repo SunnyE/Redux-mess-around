@@ -2,7 +2,11 @@ var redux = require('redux');
 
 console.log('Starting redux example');
 
-var reducer = (state = {name: 'Annonymous'}, action) => {
+var startingState = {
+    name: "Annonymous"
+}
+
+var reducer = (state = startingState, action) => {
     // state = state || {name: 'Annonymous'};
 
     return state;
