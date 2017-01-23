@@ -20,14 +20,18 @@ var reducer = (state = startingState, action) => {
     
 };
 
-var store = redux.createStore(reducer); 
+var store = redux.createStore(reducer, redux.compose(
+    window.devToolsExtension ? window.devToolsExtension() : f => f
+)); 
 
 // subscribe to changes in the store
-store.subscribe(() => {
+var unsubscribe = store.subscribe(() => {
     var state = store.getState();
 
     console.log('name is ', state.name);
-})
+});
+
+// unsubscribe();
 
 //this gets our object
 var currentState = store.getState();
