@@ -22,6 +22,13 @@ var reducer = (state = startingState, action) => {
 
 var store = redux.createStore(reducer); 
 
+// subscribe to changes in the store
+store.subscribe(() => {
+    var state = store.getState();
+
+    console.log('name is ', state.name);
+})
+
 //this gets our object
 var currentState = store.getState();
 console.log('currentState', currentState);
@@ -32,4 +39,7 @@ store.dispatch({
     name: 'Ethan'
 });
 
-console.log('Name Should be Ethan', store.getState());
+store.dispatch({
+    type: 'CHANGE_NAME',
+    name: 'RObert Cranberry souce nuggets'
+});
