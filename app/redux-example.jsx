@@ -28,6 +28,13 @@ var reducer = (state = startingState, action) => {
                     }
                 ]
             };
+        case 'REMOVE_HOBBY': 
+            return {
+                ...state,
+                hobbies: state.hobbies.filter((hobby) => {
+                    return hobby.id !== action.id
+                })
+            }
         case 'ADD_MOVIE':
             return {
                 ...state,
@@ -70,6 +77,7 @@ store.dispatch({
     name: 'Ethan'
 });
 
+
 store.dispatch({
     type: "ADD_MOVIE",
     title: 'Blazing Saddles',
@@ -86,6 +94,16 @@ store.dispatch({
 store.dispatch({
     type: 'ADD_HOBBY',
     hobby: 'running'
+});
+
+store.dispatch({
+    type: 'ADD_HOBBY',
+    hobby: 'walking'
+});
+
+store.dispatch({
+    type: 'REMOVE_HOBBY',
+    id: 2
 });
 
 store.dispatch({
