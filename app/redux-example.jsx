@@ -3,9 +3,12 @@ var redux = require('redux');
 console.log('Starting redux example');
 
 var startingState = {
-    name: "Annonymous"
+    name: "Annonymous",
+    hobbies: [],
+    movies: []
 }
-
+var nextHobbyId = 1; 
+var nextMovieId = 1;
 var reducer = (state = startingState, action) => {
     // state = state || {name: 'Annonymous'};
     switch (action.type) {
@@ -14,6 +17,29 @@ var reducer = (state = startingState, action) => {
                 ...state, 
                 name: action.name
             };
+        case 'ADD_HOBBY':
+            return {
+                ...state,
+                hobbies: [
+                    ...state.hobbies,
+                    {
+                        id: nextHobbyId++,
+                        hobby: action.hobby
+                    }
+                ]
+            };
+        case 'ADD_MOVIE':
+            return {
+                ...state,
+                movies:[
+                    ...state.movies,
+                    {
+                        id: nextMovieId++,
+                        title: action.title,
+                        genre: action.genre
+                    }
+                ]
+            }
         default:
             return state; 
     }
@@ -42,6 +68,24 @@ console.log('currentState', currentState);
 store.dispatch({
     type: 'CHANGE_NAME',
     name: 'Ethan'
+});
+
+store.dispatch({
+    type: "ADD_MOVIE",
+    title: 'Blazing Saddles',
+    genre: 'Comedy'
+});
+
+store.dispatch({
+    type: "ADD_MOVIE",
+    title: 'Beerfest',
+    genre: 'Comedy'
+})
+
+
+store.dispatch({
+    type: 'ADD_HOBBY',
+    hobby: 'running'
 });
 
 store.dispatch({
