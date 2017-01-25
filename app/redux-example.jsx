@@ -47,6 +47,13 @@ var reducer = (state = startingState, action) => {
                     }
                 ]
             }
+        case 'REMOVE_MOVIE':
+            return {
+                ...state,
+                movies: state.movies.filter((movie) => {
+                    return movie.id !== action.id
+                });
+            }
         default:
             return state; 
     }
@@ -109,4 +116,9 @@ store.dispatch({
 store.dispatch({
     type: 'CHANGE_NAME',
     name: 'RObert Cranberry souce nuggets'
+});
+
+store.dispach({
+    type: 'REMOVE_MOVIE',
+    id: 1
 });
