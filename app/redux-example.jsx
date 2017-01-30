@@ -7,8 +7,7 @@ var startingState = {
     hobbies: [],
     movies: []
 }
-var nextHobbyId = 1; 
-var nextMovieId = 1;
+
 // var oldReducer = (state = startingState, action) => {
 //     // state = state || {name: 'Annonymous'};
 //     switch (action.type) {
@@ -60,6 +59,9 @@ var nextMovieId = 1;
     
 // };
 
+// name reducer and action generator. 
+
+//-------------------------------------------
 var nameReducer = (state = 'Annonymous', action) => {
     switch (action.type) {
         case 'CHANGE_NAME':
@@ -69,6 +71,18 @@ var nameReducer = (state = 'Annonymous', action) => {
     }
 };
 
+var changeName = (name) => {
+    return {
+        type: 'CHANGE_NAME',
+        name
+    }
+
+};
+
+// hobby reducer and action generator
+//-------------------------------------------
+
+var nextHobbyId = 1; 
 var hobbiesReducer = (state = [], action) => {
     switch (action.type) { 
         case 'ADD_HOBBY':
@@ -88,7 +102,23 @@ var hobbiesReducer = (state = [], action) => {
             return state;
     }
 }
+var addHobby = (hobby) => {
+    return{
+        type: 'ADD_HOBBY',
+        hobby
+    }
+};
 
+var removeHobby = (hobby) => {
+    return {
+        type: 'REMOVE_HOBBY',
+        hobby
+    }
+};
+
+// movie reducer and action generator
+//-------------------------------------------
+var nextMovieId = 1;
 var movieReducer = (state = [], action) => {
     switch (action.type) {
         case 'ADD_MOVIE':
@@ -132,10 +162,7 @@ var currentState = store.getState();
 console.log('currentState', currentState);
 
 
-store.dispatch({
-    type: 'CHANGE_NAME',
-    name: 'Ethan'
-});
+store.dispatch(changeName('Ethan'));
 
 
 store.dispatch({
@@ -151,10 +178,7 @@ store.dispatch({
 })
 
 
-store.dispatch({
-    type: 'ADD_HOBBY',
-    hobby: 'running'
-});
+store.dispatch(addHobby('running'));
 
 store.dispatch({
     type: 'ADD_HOBBY',
@@ -166,10 +190,7 @@ store.dispatch({
     id: 2
 });
 
-store.dispatch({
-    type: 'CHANGE_NAME',
-    name: 'RObert Cranberry souce nuggets'
-});
+store.dispatch(changeName('Robert Cranberry souce nuggets'));
 
 store.dispach({
     type: 'REMOVE_MOVIE',
