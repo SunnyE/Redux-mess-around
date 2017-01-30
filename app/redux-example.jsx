@@ -106,14 +106,14 @@ var addHobby = (hobby) => {
     return{
         type: 'ADD_HOBBY',
         hobby
-    }
+    };
 };
 
-var removeHobby = (hobby) => {
+var removeHobby = (id) => {
     return {
         type: 'REMOVE_HOBBY',
-        hobby
-    }
+        id
+    };
 };
 
 // movie reducer and action generator
@@ -134,8 +134,24 @@ var movieReducer = (state = [], action) => {
             return state.movies.filter((movie) =>  movie.id !== action.id);
         default: 
             return state; 
+    };
+};
+
+var addMovie = (title, genre) => {
+    return { 
+        type: 'ADD_MOVIE',
+        title,
+        genre
+    };
+};
+
+var removeMovie = (id) => {
+    return {
+        type: 'REMOVE_MOVIE',
+        id
     }
 }
+
 
 var reducer = redux.combineReducers({
     name: nameReducer,
@@ -165,34 +181,19 @@ console.log('currentState', currentState);
 store.dispatch(changeName('Ethan'));
 
 
-store.dispatch({
-    type: "ADD_MOVIE",
-    title: 'Blazing Saddles',
-    genre: 'Comedy'
-});
+store.dispatch(addMovie('Blazing Saddles','Comedy'));
 
-store.dispatch({
-    type: "ADD_MOVIE",
-    title: 'Beerfest',
-    genre: 'Comedy'
-})
+
+store.dispatch(addMovie('Beerfest','Comedy'));
+
 
 
 store.dispatch(addHobby('running'));
 
-store.dispatch({
-    type: 'ADD_HOBBY',
-    hobby: 'walking'
-});
+store.dispatch(addHobby('walking'));
 
-store.dispatch({
-    type: 'REMOVE_HOBBY',
-    id: 2
-});
+store.dispatch(removeHobby(2));
 
 store.dispatch(changeName('Robert Cranberry souce nuggets'));
 
-store.dispach({
-    type: 'REMOVE_MOVIE',
-    id: 1
-});
+store.dispach(removeMovie(1));
