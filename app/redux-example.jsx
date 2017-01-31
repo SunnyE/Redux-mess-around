@@ -156,7 +156,8 @@ var removeMovie = (id) => {
 var reducer = redux.combineReducers({
     name: nameReducer,
     hobbies: hobbiesReducer,
-    movies: moviesReducer
+    movies: moviesReducer,
+    map: mapReducer
 })
 
 var store = redux.createStore(reducer, redux.compose(
