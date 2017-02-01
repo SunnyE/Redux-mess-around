@@ -155,7 +155,7 @@ var removeMovie = (id) => {
 
 // Map reducer and action generators 
 
-var mapReducer = (state ={isFetching = false, url: undefined}, action) => {
+var mapReducer = (state = {isFetching: false, url: undefined}, action) => {
     switch (action.type) {
         case 'START_LOCATION_FETCH':
             return {
