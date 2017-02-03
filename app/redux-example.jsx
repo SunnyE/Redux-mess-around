@@ -230,22 +230,22 @@ var currentState = store.getState();
 console.log('currentState', currentState);
 
 
-store.dispatch(changeName('Ethan'));
+store.dispatch(actions.changeName('Ethan'));
 
 
-store.dispatch(addMovie('Blazing Saddles','Comedy'));
+store.dispatch(actions.addMovie('Blazing Saddles','Comedy'));
 
 
-store.dispatch(addMovie('Beerfest','Comedy'));
+store.dispatch(actions.addMovie('Beerfest','Comedy'));
 
 
 
-store.dispatch(addHobby('running'));
+store.dispatch(actions.addHobby('running'));
 
-store.dispatch(addHobby('walking'));
+store.dispatch(actions.addHobby('walking'));
 
-store.dispatch(removeHobby(2));
+store.dispatch(actions.removeHobby(2));
 
-store.dispatch(changeName('Robert Cranberry souce nuggets'));
+store.dispatch(actions.changeName('Robert Cranberry souce nuggets'));
 
-store.dispach(removeMovie(1));
+store.dispach(actions.removeMovie(1));
