@@ -49,12 +49,14 @@ export var completeLocationFetch = (url) => {
 };
 
 export var fetchLocation = () => {
-    store.dispatch(startLocationFetch());
+    return (dispatch, getState) => {
+        dispatch(startLocationFetch());
     
-    axios.get('http://ipinfo.io').then(function (res) {
+        axios.get('http://ipinfo.io').then(function (res) {
         var loc = res.data.loc;
         var baseUrl = 'http://maps.google.com?q='
 
-        store.dispatch(completeLocationFetch(baseUrl + loc));
+        dispatch(completeLocationFetch(baseUrl + loc));
         });
+    }
 };
