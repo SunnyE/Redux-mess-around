@@ -1,5 +1,5 @@
 var redux = require('redux');
-var thunk = require('thunk').default;
+// var thunk = require('thunk').default;
 var {nameReducer, hobbiesReducer, moviesReducer, mapReducer} = require('./../reducers/index')
 
 export var configure = () => {
